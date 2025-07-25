@@ -1,3 +1,6 @@
+using asp_net_api_tarefas.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace asp_net_api_tarefas
 {
     public class Program
@@ -9,7 +12,10 @@ namespace asp_net_api_tarefas
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddDbContext<TarefaContexto>(opt =>
+                opt.UseInMemoryDatabase("TarefasLista")
+            
+                );
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
